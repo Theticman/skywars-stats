@@ -1,0 +1,30 @@
+<!doctype>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>STATS</title>
+        <link rel="icon" type="image/svg" href="./assets/Logo.svg">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="./style.css">
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <div class="authentification" v-if="!info.displayname">
+                <input v-model="info.key" placeholder="API key">
+                <button @click="verifyKey()">Continue</button>
+                <p>{{error.key}}</p>
+            </div>
+            <div class="">
+                <h1>Skywars stats :</h1>
+                <h3>{{info.displayname}}</h3>
+                <h4>Opals: {{stats.opals}}</h4>
+                <h4>Shards: {{stats.shard}}</h4>
+                <canvas id="myChart"></canvas>
+            </div>
+        </div>
+        <script src="./script.js"></script>
+    </body>
+</html>
