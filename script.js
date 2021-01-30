@@ -30,7 +30,7 @@ var app = new Vue({
         }     
       },
       async getData() {
-        const res = await await axios.get(`https://api.hypixel.net/player?uuid=${this.info.uuid}&key=${this.info.key}`)
+        const res = await axios.get(`https://api.hypixel.net/player?uuid=${this.info.uuid}&key=${this.info.key}`)
         console.log(res.data.player.stats.SkyWars)
         if (this.stats.games - res.data.player.stats.SkyWars.games == -1 || this.stats.kills - res.data.player.stats.SkyWars.kills < 0) {
             const kills = res.data.player.stats.SkyWars.kills - this.stats.kills
