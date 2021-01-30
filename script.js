@@ -22,6 +22,7 @@ var app = new Vue({
             const res2 = await axios.get(`https://api.hypixel.net/player?uuid=${this.info.uuid}&key=${this.info.key}`)
             console.log(res2.data.player.displayname)
             this.info.displayname = res2.data.player.displayname
+            this.stats = res.data.player.stats.SkyWars
             this.loop = setInterval(() => {this.getData()}, 1000)
         }
         catch (error) {
@@ -31,7 +32,7 @@ var app = new Vue({
       async getData() {
         const res = await await axios.get(`https://api.hypixel.net/player?uuid=${this.info.uuid}&key=${this.info.key}`)
         console.log(res.data.player.stats.SkyWars)
-        if (this.stats.games - res.data.player.stats.SkyWars.games == -1) {
+        if (this.stats.games - res.data.player.stats.SkyWars.games == -1 || this.stats.kills - res.data.player.stats.SkyWars.kills < 0) {
             const kills = res.data.player.stats.SkyWars.kills - this.stats.kills
             this.updateStats(res, kills)
         }
