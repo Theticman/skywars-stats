@@ -22,7 +22,7 @@ var app = new Vue({
             const res2 = await axios.get(`https://api.hypixel.net/player?uuid=${this.info.uuid}&key=${this.info.key}`)
             console.log(res2.data.player.displayname)
             this.info.displayname = res2.data.player.displayname
-            this.stats = res.data.player.stats.SkyWars
+            this.stats = res2.data.player.stats.SkyWars
             this.loop = setInterval(() => {this.getData()}, 1000)
         }
         catch (error) {
